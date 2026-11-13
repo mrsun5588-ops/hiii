@@ -1,0 +1,12 @@
+{
+  "name": "غرفة الحفلة",
+  "short_name": "غرفة الحفلة",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0e0a22",
+  "theme_color": "#0e0a22",
+  "icons": [{"src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"}]
+}

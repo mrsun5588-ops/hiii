@@ -1,0 +1,52 @@
+/* Layout: header with title + hype meter, a canvas party room, and a sound studio panel pinned underneath */
+:root{
+  --bg:#0e0a22; --panel:#181233; --cell:#231b47; --cell2:#2e2459; --line:#34295f;
+  --text:#f5f0ff; --muted:#a79dcf; --hot:#ff4d8d; --glow:#3de1ff;
+  --display:'Lalezar','Tajawal',system-ui,sans-serif; --body:'Tajawal',system-ui,sans-serif;
+  color-scheme:dark;
+}
+html,body{height:100%}
+body{box-sizing:border-box}
+body{
+  background:var(--bg); color:var(--text); font-family:var(--body); font-size:15px;
+  margin:0; padding-block:max(10px,env(safe-area-inset-top,0px)) max(10px,env(safe-area-inset-bottom,0px)); padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px));
+  -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none;
+}
+button{font-family:inherit}
+button:focus-visible,input:focus-visible{outline:2px solid var(--glow);outline-offset:2px}
+.app{height:100%;max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:10px;min-height:0}
+.top{display:flex;align-items:center;gap:14px;flex:none}
+.top h1{margin:0;font:400 26px/1 var(--display);letter-spacing:.3px;white-space:nowrap}
+.meter{flex:1;min-width:0}
+.meter .ml{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:var(--muted);margin-bottom:4px}
+.meter b{color:var(--text);font-size:15px}
+.meter .mt{height:10px;border-radius:6px;background:var(--cell);overflow:hidden}
+.meter .mt i{display:block;height:100%;width:0;background:linear-gradient(90deg,#7c5cff,#ff4d8d,#ffb703);border-radius:6px}
+.stage{flex:1 1 0;min-height:200px;position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#120c2b}
+.stage canvas{display:block;width:100%;height:100%}
+.hint{position:absolute;inset-inline:0;bottom:10px;text-align:center;font-size:13px;color:var(--muted);pointer-events:none;transition:opacity .3s}
+.hint.off{opacity:0}
+.panel{flex:none;display:flex;flex-direction:column;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:12px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.play{flex:none;display:flex;align-items:center;gap:8px;min-height:46px;padding:0 20px 0 22px;border:0;border-radius:14px;background:var(--hot);color:#fff;font:700 16px var(--body);cursor:pointer}
+.play svg{width:18px;height:18px}
+.play.on{background:#ffb703;color:#2a1a00}
+.tempo{flex:1;min-width:150px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+.tempo input{flex:1;min-width:0;accent-color:var(--hot)}
+.tempo b{color:var(--text);min-width:2.2em;text-align:center;font-variant-numeric:tabular-nums}
+.ghost{min-height:40px;padding:0 14px;border-radius:12px;border:1px solid var(--line);background:transparent;color:var(--text);font:700 13px var(--body);cursor:pointer}
+.ghost.gold{border-color:#ffb703;color:#ffb703}
+.sounds{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.chip{--c:#fff;display:flex;flex-direction:column;gap:7px;align-items:center;justify-content:center;min-height:54px;padding:8px 4px 7px;border-radius:12px;background:var(--cell);border:1.5px solid transparent;color:var(--text);font:700 14px var(--body);cursor:pointer}
+.chip[aria-pressed=true]{border-color:var(--c);background:color-mix(in srgb,var(--c) 20%,var(--cell))}
+.tk{display:grid;grid-template-columns:repeat(16,1fr);gap:1px;width:82%;direction:ltr}
+.tk i{height:4px;border-radius:1px;background:rgba(255,255,255,.14)}
+.tk i.on{background:var(--c)}
+.sh{display:flex;justify-content:space-between;gap:8px;font-size:13px;color:var(--muted)}
+.sh b{color:var(--text)}
+.steps{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;direction:ltr}
+.st{--c:#fff;position:relative;height:44px;padding:0;border:0;border-radius:9px;background:var(--cell);overflow:hidden;cursor:pointer}
+.st.b{background:var(--cell2)}
+.st i{position:absolute;left:0;right:0;bottom:0;height:var(--h,0%);background:var(--c);transition:height .08s}
+.st.now{outline:2px solid #fff;outline-offset:-2px}
+@media (prefers-reduced-motion:reduce){.st i{transition:none}}
